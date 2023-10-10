@@ -2,7 +2,6 @@
 
 This Repository summarizes the progress made on RISC V based project.
 
-
 <details>
   <summary>
     
@@ -21,16 +20,16 @@ Temperature Zoning: HVAC systems can be designed with zoning capabilities, allow
 **4. Preservation:**
 Preservation of Goods: In industries, HVAC systems help maintain stable temperature and humidity levels, preserving products, raw materials, and equipment.
 Preservation of Artifacts: HVAC systems are critical in museums and archives to preserve artifacts, paintings, and historical documents.
-5. Productivity and Performance:
+**5. Productivity and Performance:**
 Employee Productivity: Comfortable and healthy indoor environments enhance productivity and reduce absenteeism among employees.
 Equipment Performance: HVAC systems prevent overheating of machinery and electronic equipment, ensuring they operate efficiently and have a longer lifespan.
-6. Control of Environmental Factors:
+**6. Control of Environmental Factors:**
 Odor Control: HVAC systems can include filters and ventilation systems to control and eliminate odors, crucial in environments like restaurants and industrial facilities.
 Smoke and Fume Extraction: HVAC systems in commercial kitchens and factories remove smoke, fumes, and airborne particles, providing a safer working environment.
-7. Compliance and Regulations:
+**7. Compliance and Regulations:**
 Regulatory Compliance: Many building codes and regulations require proper ventilation and HVAC systems to ensure the health and safety of occupants.
 Occupancy Permits: Buildings need to meet HVAC requirements to obtain occupancy permits, ensuring the space is fit for human habitation or commercial use.
-8. Specialized Needs:
+**8. Specialized Needs:**
 Server Rooms: HVAC systems maintain optimal temperatures in server rooms, preventing overheating and ensuring continuous operation of computer systems.
 Clean Rooms: Industries such as pharmaceuticals, electronics, and aerospace rely on HVAC systems to maintain sterile and controlled environments.
 In summary, HVAC systems are essential for ensuring human comfort, health, safety, and the efficient operation of buildings and various industrial processes. They are designed to address a wide range of environmental and operational needs in diverse settings.
@@ -88,6 +87,7 @@ In summary, the integration of HVAC systems in cars is driven by the need to pro
   <summary>
     C code
   </summary>
+	
   ```
   int main() {
     int temp_sensor;      // bit 0
@@ -168,9 +168,11 @@ In summary, the integration of HVAC systems in cars is driven by the need to pro
 </details>
 
 <details>
+
   <summary>
     Code conversion to Assembly
   </summary>
+
 ```
   
   output.o:     file format elf32-littleriscv
@@ -249,7 +251,19 @@ Acknowldgement
 </summary>
 
 * I would sincerely like to thank Mr. Kunal Ghosh, Co founder of VLSI System Design Corp. Pvt. Ltd. for his consistent support and guidance throughout this task.
-Bhargav, Colleague at IIITB
-Divyam Satle, Colleague at IIITB
+* Bhargav, Colleague at IIITB
+* Divyam Satle, Colleague at IIITB
+</details>
+
+<details>
+	<summary>
+		References
+	</summary>
+	
+ * https://github.com/SakethGajawada/RISCV-GNU
+ * https://github.com/kunalg123
+ * https://www.vsdiat.com/
+</details>
+
 
 
