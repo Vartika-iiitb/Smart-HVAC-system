@@ -93,6 +93,4 @@ In summary, the integration of HVAC systems in cars is driven by the need to pro
  * It include features like real time temperature monitoring, Scheduling and remote control.
  * Implement Machine Learning algorithms
  
- 
-  
 </details>
