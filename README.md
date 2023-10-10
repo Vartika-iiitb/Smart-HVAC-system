@@ -271,7 +271,6 @@ Acknowldgement
 
 * I would sincerely like to thank Mr. Kunal Ghosh, Co founder of VLSI System Design Corp. Pvt. Ltd. for his consistent support and guidance throughout this task.
 * Bhargav, Colleague at IIITB
-* Divyam Satle, Colleague at IIITB
 </details>
 
 <details>
