@@ -86,6 +86,153 @@ In summary, the integration of HVAC systems in cars is driven by the need to pro
 </details>
 <details>
   <summary>
+    C code
+  </summary>
+  ```
+  int main() {
+    int temp_sensor;      // bit 0
+    int car_window_motor;//bit 1 & 2
+    int AC;//bit 3
+    int mask;
+
+    
+
+    while (1) {
+        
+	asm volatile(
+	    	"andi %0, x30, 1\n\t"
+	    	:"=r"(temp_sensor)
+	    	:
+	    	:
+	    	);
+        if (temp_sensor == 1 && AC==0) { // temperature more than threshold, Roll off the windows and turn on AC
+            //motor=2 makes roll up windows
+            car_window_motor=2;//10 is one direction
+            
+            mask = 0xFFFFFFF9;
+            asm volatile(
+	    "and x30, x30, %1\n\t"
+	    "or x30, x30, %0\n\t"
+	    :
+	    :"r"(car_window_motor),"r"(mask)
+	    :"x30"
+	    );
+            
+            
+            //on AC
+            AC=1;
+            mask = 0xFFFFFFF7;
+            asm volatile(
+	    "and x30, x30, %1\n\t"
+	    "or x30, x30, %0\n\t"
+	    :
+	    :"r"(AC),"r"(mask)
+	    :"x30"
+	    );
+        }
+        else if (temp_sensor == 0 && AC==1)
+        { // temperature less than threshold roll down windows & AC is off
+           
+              //motor=1 makes roll down windows
+            car_window_motor=1;//01 is opposite direction
+            
+            mask = 0xFFFFFFF9;
+            asm volatile(
+	    "and x30, x30, %1\n\t"
+	    "or x30, x30, %0\n\t"
+	    :
+	    :"r"(car_window_motor),"r"(mask)
+	    :"x30"
+	    );
+            
+            
+            //on AC
+            AC=0;
+            mask = 0xFFFFFFF7;
+            asm volatile(
+	    "and x30, x30, %1\n\t"
+	    "or x30, x30, %0\n\t"
+	    :
+	    :"r"(AC),"r"(mask)
+	    :"x30"
+	    );
+        }
+
+       
+    }
+
+    return 0;
+}
+```
+
+</details>
+
+<details>
+  <summary>
+    Code conversion to Assembly
+  </summary>
+```
+  
+  output.o:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00010074 <main>:
+   10074:	fe010113          	add	sp,sp,-32
+   10078:	00812e23          	sw	s0,28(sp)
+   1007c:	02010413          	add	s0,sp,32
+   10080:	001f7793          	and	a5,t5,1
+   10084:	fef42423          	sw	a5,-24(s0)
+   10088:	fe842703          	lw	a4,-24(s0)
+   1008c:	00100793          	li	a5,1
+   10090:	04f71863          	bne	a4,a5,100e0 <main+0x6c>
+   10094:	fec42783          	lw	a5,-20(s0)
+   10098:	04079463          	bnez	a5,100e0 <main+0x6c>
+   1009c:	00200793          	li	a5,2
+   100a0:	fef42223          	sw	a5,-28(s0)
+   100a4:	ff900793          	li	a5,-7
+   100a8:	fef42023          	sw	a5,-32(s0)
+   100ac:	fe442783          	lw	a5,-28(s0)
+   100b0:	fe042703          	lw	a4,-32(s0)
+   100b4:	00ef7f33          	and	t5,t5,a4
+   100b8:	00ff6f33          	or	t5,t5,a5
+   100bc:	00100793          	li	a5,1
+   100c0:	fef42623          	sw	a5,-20(s0)
+   100c4:	ff700793          	li	a5,-9
+   100c8:	fef42023          	sw	a5,-32(s0)
+   100cc:	fec42783          	lw	a5,-20(s0)
+   100d0:	fe042703          	lw	a4,-32(s0)
+   100d4:	00ef7f33          	and	t5,t5,a4
+   100d8:	00ff6f33          	or	t5,t5,a5
+   100dc:	0540006f          	j	10130 <main+0xbc>
+   100e0:	fe842783          	lw	a5,-24(s0)
+   100e4:	f8079ee3          	bnez	a5,10080 <main+0xc>
+   100e8:	fec42703          	lw	a4,-20(s0)
+   100ec:	00100793          	li	a5,1
+   100f0:	f8f718e3          	bne	a4,a5,10080 <main+0xc>
+   100f4:	00100793          	li	a5,1
+   100f8:	fef42223          	sw	a5,-28(s0)
+   100fc:	ff900793          	li	a5,-7
+   10100:	fef42023          	sw	a5,-32(s0)
+   10104:	fe442783          	lw	a5,-28(s0)
+   10108:	fe042703          	lw	a4,-32(s0)
+   1010c:	00ef7f33          	and	t5,t5,a4
+   10110:	00ff6f33          	or	t5,t5,a5
+   10114:	fe042623          	sw	zero,-20(s0)
+   10118:	ff700793          	li	a5,-9
+   1011c:	fef42023          	sw	a5,-32(s0)
+   10120:	fec42783          	lw	a5,-20(s0)
+   10124:	fe042703          	lw	a4,-32(s0)
+   10128:	00ef7f33          	and	t5,t5,a4
+   1012c:	00ff6f33          	or	t5,t5,a5
+   10130:	f51ff06f          	j	10080 <main+0xc>
+   ```
+
+</details>
+
+<details>
+  <summary>
     FUTURE SCOPE
   </summary>
   
