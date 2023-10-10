@@ -233,7 +233,7 @@ Disassembly of section .text:
    ```
 
 ![diff instru](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/afc21576-9b60-48fe-a481-0aa8330b8bdb)
-
+```
 Number of different instructions: 9
 List of different instructions:
 li
@@ -245,7 +245,13 @@ lw
 and
 j
 add
+```
+The compiled output of the C program has been shown below.
+
+![tbovartika](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/792b1945-8da1-4bab-8915-3f00e0041b04)
+
 </details>
+
 
 <details>
   <summary>
