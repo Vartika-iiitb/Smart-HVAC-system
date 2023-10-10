@@ -232,6 +232,17 @@ Disassembly of section .text:
    
    ```
 
+Number of different instructions: 9
+List of different instructions:
+li
+sw
+or
+bne
+bnez
+lw
+and
+j
+add
 </details>
 
 <details>
