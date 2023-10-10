@@ -256,9 +256,9 @@ Acknowldgement
 </details>
 
 <details>
-	<summary>
-		References
-	</summary>
+<summary>
+References
+</summary>
 	
  * https://github.com/SakethGajawada/RISCV-GNU
  * https://github.com/kunalg123
