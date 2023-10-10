@@ -227,6 +227,7 @@ Disassembly of section .text:
    10128:	00ef7f33          	and	t5,t5,a4
    1012c:	00ff6f33          	or	t5,t5,a5
    10130:	f51ff06f          	j	10080 <main+0xc>
+   
    ```
 
 </details>
