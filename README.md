@@ -4,34 +4,26 @@ This Repository summarizes the progress made on RISC V based project.
 
 <details>
   <summary>
-    
+    Purpose
   </summary>
-  Heating, Ventilation, and Air Conditioning (HVAC) systems are essential in various applications where maintaining optimal indoor environmental conditions is crucial for comfort, health, or process requirements. HVAC systems are essential in various environments for several reasons:
+  Heating, Ventilation, and Air Conditioning (HVAC) systems are essential in various applications where maintaining optimal indoor environmental conditions is crucial for comfort, health, or process requirements. 
+
+This Project focusses on smart HVAC systems that are installed in cars which will ensure a temperature and moisture control inside the vehicle using DHT11 temperature and moisture sensor. It is Effective as well as economically feasible. The output of the sensor will act as the input for RISC V which will be help us to roll off the window and Switch on the HVAC system even if the people are not around. These are useful when the car is either parked on outdoors during the day time or if there is humidity out. These are essential in various environments for several reasons:
 
 **1. Comfort:**
+
 Temperature Control: HVAC systems regulate indoor temperatures, ensuring occupants are comfortable regardless of external weather conditions.
 Humidity Control: HVAC systems maintain optimal humidity levels, preventing discomfort caused by dry or excessively humid air.
+
 **2. Health and Safety:**
+
 Air Quality: HVAC systems filter and circulate air, removing pollutants, allergens, and contaminants. This is crucial for indoor air quality, especially in buildings with limited natural ventilation.
 Disease Control: Proper ventilation and air exchange help reduce the spread of airborne diseases by diluting and exhausting contaminants.
+
 **3. Energy Efficiency:**
 Energy Conservation: HVAC systems are designed to be energy-efficient, reducing overall energy consumption in buildings.
 Temperature Zoning: HVAC systems can be designed with zoning capabilities, allowing specific areas to be heated or cooled as needed, conserving energy in unoccupied spaces.
-**4. Preservation:**
-Preservation of Goods: In industries, HVAC systems help maintain stable temperature and humidity levels, preserving products, raw materials, and equipment.
-Preservation of Artifacts: HVAC systems are critical in museums and archives to preserve artifacts, paintings, and historical documents.
-**5. Productivity and Performance:**
-Employee Productivity: Comfortable and healthy indoor environments enhance productivity and reduce absenteeism among employees.
-Equipment Performance: HVAC systems prevent overheating of machinery and electronic equipment, ensuring they operate efficiently and have a longer lifespan.
-**6. Control of Environmental Factors:**
-Odor Control: HVAC systems can include filters and ventilation systems to control and eliminate odors, crucial in environments like restaurants and industrial facilities.
-Smoke and Fume Extraction: HVAC systems in commercial kitchens and factories remove smoke, fumes, and airborne particles, providing a safer working environment.
-**7. Compliance and Regulations:**
-Regulatory Compliance: Many building codes and regulations require proper ventilation and HVAC systems to ensure the health and safety of occupants.
-Occupancy Permits: Buildings need to meet HVAC requirements to obtain occupancy permits, ensuring the space is fit for human habitation or commercial use.
-**8. Specialized Needs:**
-Server Rooms: HVAC systems maintain optimal temperatures in server rooms, preventing overheating and ensuring continuous operation of computer systems.
-Clean Rooms: Industries such as pharmaceuticals, electronics, and aerospace rely on HVAC systems to maintain sterile and controlled environments.
+
 In summary, HVAC systems are essential for ensuring human comfort, health, safety, and the efficient operation of buildings and various industrial processes. They are designed to address a wide range of environmental and operational needs in diverse settings.
   
 </details>
