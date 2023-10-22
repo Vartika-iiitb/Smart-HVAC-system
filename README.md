@@ -166,61 +166,60 @@ In summary, the integration of HVAC systems in cars is driven by the need to pro
   </summary>
 
 ```
-  
-  output.o:     file format elf32-littleriscv
+  c.out:     file format elf32-littleriscv
 
 
 Disassembly of section .text:
 
-00010074 <main>:
-   10074:	fe010113          	add	sp,sp,-32
-   10078:	00812e23          	sw	s0,28(sp)
-   1007c:	02010413          	add	s0,sp,32
-   10080:	001f7793          	and	a5,t5,1
-   10084:	fef42423          	sw	a5,-24(s0)
-   10088:	fe842703          	lw	a4,-24(s0)
-   1008c:	00100793          	li	a5,1
-   10090:	04f71863          	bne	a4,a5,100e0 <main+0x6c>
-   10094:	fec42783          	lw	a5,-20(s0)
-   10098:	04079463          	bnez	a5,100e0 <main+0x6c>
-   1009c:	00200793          	li	a5,2
-   100a0:	fef42223          	sw	a5,-28(s0)
-   100a4:	ff900793          	li	a5,-7
+00010054 <main>:
+   10054:	fe010113          	addi	sp,sp,-32
+   10058:	00812e23          	sw	s0,28(sp)
+   1005c:	02010413          	addi	s0,sp,32
+   10060:	001f7793          	andi	a5,t5,1
+   10064:	fef42423          	sw	a5,-24(s0)
+   10068:	fe842703          	lw	a4,-24(s0)
+   1006c:	00100793          	li	a5,1
+   10070:	04f71863          	bne	a4,a5,100c0 <main+0x6c>
+   10074:	fec42783          	lw	a5,-20(s0)
+   10078:	04079463          	bnez	a5,100c0 <main+0x6c>
+   1007c:	00200793          	li	a5,2
+   10080:	fef42223          	sw	a5,-28(s0)
+   10084:	ff900793          	li	a5,-7
+   10088:	fef42023          	sw	a5,-32(s0)
+   1008c:	fe442783          	lw	a5,-28(s0)
+   10090:	fe042703          	lw	a4,-32(s0)
+   10094:	00ef7f33          	and	t5,t5,a4
+   10098:	00ff6f33          	or	t5,t5,a5
+   1009c:	00100793          	li	a5,1
+   100a0:	fef42623          	sw	a5,-20(s0)
+   100a4:	ff700793          	li	a5,-9
    100a8:	fef42023          	sw	a5,-32(s0)
-   100ac:	fe442783          	lw	a5,-28(s0)
+   100ac:	fec42783          	lw	a5,-20(s0)
    100b0:	fe042703          	lw	a4,-32(s0)
    100b4:	00ef7f33          	and	t5,t5,a4
    100b8:	00ff6f33          	or	t5,t5,a5
-   100bc:	00100793          	li	a5,1
-   100c0:	fef42623          	sw	a5,-20(s0)
-   100c4:	ff700793          	li	a5,-9
-   100c8:	fef42023          	sw	a5,-32(s0)
-   100cc:	fec42783          	lw	a5,-20(s0)
-   100d0:	fe042703          	lw	a4,-32(s0)
-   100d4:	00ef7f33          	and	t5,t5,a4
-   100d8:	00ff6f33          	or	t5,t5,a5
-   100dc:	0540006f          	j	10130 <main+0xbc>
-   100e0:	fe842783          	lw	a5,-24(s0)
-   100e4:	f8079ee3          	bnez	a5,10080 <main+0xc>
-   100e8:	fec42703          	lw	a4,-20(s0)
-   100ec:	00100793          	li	a5,1
-   100f0:	f8f718e3          	bne	a4,a5,10080 <main+0xc>
-   100f4:	00100793          	li	a5,1
-   100f8:	fef42223          	sw	a5,-28(s0)
-   100fc:	ff900793          	li	a5,-7
-   10100:	fef42023          	sw	a5,-32(s0)
-   10104:	fe442783          	lw	a5,-28(s0)
-   10108:	fe042703          	lw	a4,-32(s0)
-   1010c:	00ef7f33          	and	t5,t5,a4
-   10110:	00ff6f33          	or	t5,t5,a5
-   10114:	fe042623          	sw	zero,-20(s0)
-   10118:	ff700793          	li	a5,-9
-   1011c:	fef42023          	sw	a5,-32(s0)
-   10120:	fec42783          	lw	a5,-20(s0)
-   10124:	fe042703          	lw	a4,-32(s0)
-   10128:	00ef7f33          	and	t5,t5,a4
-   1012c:	00ff6f33          	or	t5,t5,a5
-   10130:	f51ff06f          	j	10080 <main+0xc>
+   100bc:	0540006f          	j	10110 <main+0xbc>
+   100c0:	fe842783          	lw	a5,-24(s0)
+   100c4:	f8079ee3          	bnez	a5,10060 <main+0xc>
+   100c8:	fec42703          	lw	a4,-20(s0)
+   100cc:	00100793          	li	a5,1
+   100d0:	f8f718e3          	bne	a4,a5,10060 <main+0xc>
+   100d4:	00100793          	li	a5,1
+   100d8:	fef42223          	sw	a5,-28(s0)
+   100dc:	ff900793          	li	a5,-7
+   100e0:	fef42023          	sw	a5,-32(s0)
+   100e4:	fe442783          	lw	a5,-28(s0)
+   100e8:	fe042703          	lw	a4,-32(s0)
+   100ec:	00ef7f33          	and	t5,t5,a4
+   100f0:	00ff6f33          	or	t5,t5,a5
+   100f4:	fe042623          	sw	zero,-20(s0)
+   100f8:	ff700793          	li	a5,-9
+   100fc:	fef42023          	sw	a5,-32(s0)
+   10100:	fec42783          	lw	a5,-20(s0)
+   10104:	fe042703          	lw	a4,-32(s0)
+   10108:	00ef7f33          	and	t5,t5,a4
+   1010c:	00ff6f33          	or	t5,t5,a5
+   10110:	f51ff06f          	j	10060 <main+0xc>
    
    ```
 
