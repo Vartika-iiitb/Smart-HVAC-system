@@ -223,7 +223,7 @@ Disassembly of section .text:
    
    ```
 
-![diff instru](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/afc21576-9b60-48fe-a481-0aa8330b8bdb)
+
 ```
 Number of different instructions: 10
 List of unique instructions:
