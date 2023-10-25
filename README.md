@@ -172,60 +172,40 @@ int main()  {
   </summary>
 
 ```
-  c.out:     file format elf32-littleriscv
+  out:     file format elf32-littleriscv
 
 
 Disassembly of section .text:
 
 00010054 <main>:
-   10054:	fe010113          	addi	sp,sp,-32
-   10058:	00812e23          	sw	s0,28(sp)
-   1005c:	02010413          	addi	s0,sp,32
-   10060:	001f7793          	andi	a5,t5,1
-   10064:	fef42423          	sw	a5,-24(s0)
-   10068:	fe842703          	lw	a4,-24(s0)
-   1006c:	00100793          	li	a5,1
-   10070:	04f71863          	bne	a4,a5,100c0 <main+0x6c>
-   10074:	fec42783          	lw	a5,-20(s0)
-   10078:	04079463          	bnez	a5,100c0 <main+0x6c>
-   1007c:	00200793          	li	a5,2
-   10080:	fef42223          	sw	a5,-28(s0)
-   10084:	ff900793          	li	a5,-7
-   10088:	fef42023          	sw	a5,-32(s0)
-   1008c:	fe442783          	lw	a5,-28(s0)
-   10090:	fe042703          	lw	a4,-32(s0)
-   10094:	00ef7f33          	and	t5,t5,a4
-   10098:	00ff6f33          	or	t5,t5,a5
-   1009c:	00100793          	li	a5,1
-   100a0:	fef42623          	sw	a5,-20(s0)
-   100a4:	ff700793          	li	a5,-9
+   10054:	fd010113          	addi	sp,sp,-48
+   10058:	02812623          	sw	s0,44(sp)
+   1005c:	03010413          	addi	s0,sp,48
+   10060:	fec42783          	lw	a5,-20(s0)
+   10064:	00ff6f33          	or	t5,t5,a5
+   10068:	001f7793          	andi	a5,t5,1
+   1006c:	fef42423          	sw	a5,-24(s0)
+   10070:	fec42783          	lw	a5,-20(s0)
+   10074:	02079463          	bnez	a5,1009c <main+0x48>
+   10078:	ffd00793          	li	a5,-3
+   1007c:	fef42223          	sw	a5,-28(s0)
+   10080:	fe042023          	sw	zero,-32(s0)
+   10084:	fe442783          	lw	a5,-28(s0)
+   10088:	00ff7f33          	and	t5,t5,a5
+   1008c:	002f6f13          	ori	t5,t5,2
+   10090:	000f0793          	mv	a5,t5
+   10094:	fcf42e23          	sw	a5,-36(s0)
+   10098:	fc9ff06f          	j	10060 <main+0xc>
+   1009c:	ffd00793          	li	a5,-3
+   100a0:	fef42223          	sw	a5,-28(s0)
+   100a4:	00100793          	li	a5,1
    100a8:	fef42023          	sw	a5,-32(s0)
-   100ac:	fec42783          	lw	a5,-20(s0)
-   100b0:	fe042703          	lw	a4,-32(s0)
-   100b4:	00ef7f33          	and	t5,t5,a4
-   100b8:	00ff6f33          	or	t5,t5,a5
-   100bc:	0540006f          	j	10110 <main+0xbc>
-   100c0:	fe842783          	lw	a5,-24(s0)
-   100c4:	f8079ee3          	bnez	a5,10060 <main+0xc>
-   100c8:	fec42703          	lw	a4,-20(s0)
-   100cc:	00100793          	li	a5,1
-   100d0:	f8f718e3          	bne	a4,a5,10060 <main+0xc>
-   100d4:	00100793          	li	a5,1
-   100d8:	fef42223          	sw	a5,-28(s0)
-   100dc:	ff900793          	li	a5,-7
-   100e0:	fef42023          	sw	a5,-32(s0)
-   100e4:	fe442783          	lw	a5,-28(s0)
-   100e8:	fe042703          	lw	a4,-32(s0)
-   100ec:	00ef7f33          	and	t5,t5,a4
-   100f0:	00ff6f33          	or	t5,t5,a5
-   100f4:	fe042623          	sw	zero,-20(s0)
-   100f8:	ff700793          	li	a5,-9
-   100fc:	fef42023          	sw	a5,-32(s0)
-   10100:	fec42783          	lw	a5,-20(s0)
-   10104:	fe042703          	lw	a4,-32(s0)
-   10108:	00ef7f33          	and	t5,t5,a4
-   1010c:	00ff6f33          	or	t5,t5,a5
-   10110:	f51ff06f          	j	10060 <main+0xc>
+   100ac:	fe442783          	lw	a5,-28(s0)
+   100b0:	00ff7f33          	and	t5,t5,a5
+   100b4:	000f6f13          	ori	t5,t5,0
+   100b8:	000f0793          	mv	a5,t5
+   100bc:	fcf42c23          	sw	a5,-40(s0)
+   100c0:	fa1ff06f          	j	10060 <main+0xc>
    
    ```
 
