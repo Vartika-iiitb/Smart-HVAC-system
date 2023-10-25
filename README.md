@@ -121,7 +121,7 @@ int main()  {
        
             asm volatile(
             "and x30,x30, %0\n\t"     // Load immediate 1 into x30
-            "ori x30, x30,2"                 // output at 2nd bit , keeps buzzer in off
+            "ori x30, x30,2"                 // output at 2nd bit , switches off the HVAC unit
             :
             :"r"(masking)
             :"x30"
