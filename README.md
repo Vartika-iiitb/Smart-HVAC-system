@@ -81,80 +81,86 @@ In summary, the integration of HVAC systems in cars is driven by the need to pro
   </summary>
 	
   ```
-  int main() {
-    int temp_sensor;      // bit 0
-    int car_window_motor;//bit 1 & 2
-    int AC;//bit 3
-    int mask;
+#include<stdio.h>
+int main()  {
 
+    int sensor_status;
+    int Temp_sensor;
+    int masking;
+    int i;
+    int sensor_state;
+    int HVAC0,HVAC1;
     
-
-    while (1) {
+    
+        for (int j=0; j<15;j++) {
+        //while(1){
         
-	asm volatile(
-	    	"andi %0, x30, 1\n\t"
-	    	:"=r"(temp_sensor)
-	    	:
-	    	:
-	    	);
-        if (temp_sensor == 1 && AC==0) { // temperature more than threshold, Roll off the windows and turn on AC
-            //motor=2 makes roll up windows
-            car_window_motor=2;//10 is one direction
-            
-            mask = 0xFFFFFFF9;
-            asm volatile(
-	    "and x30, x30, %1\n\t"
-	    "or x30, x30, %0\n\t"
-	    :
-	    :"r"(car_window_motor),"r"(mask)
-	    :"x30"
-	    );
-            
-            
-            //on AC
-            AC=1;
-            mask = 0xFFFFFFF7;
-            asm volatile(
-	    "and x30, x30, %1\n\t"
-	    "or x30, x30, %0\n\t"
-	    :
-	    :"r"(AC),"r"(mask)
-	    :"x30"
-	    );
-        }
-        else if (temp_sensor == 0 && AC==1)
-        { // temperature less than threshold roll down windows & AC is off
-           
-              //motor=1 makes roll down windows
-            car_window_motor=1;//01 is opposite direction
-            
-            mask = 0xFFFFFFF9;
-            asm volatile(
-	    "and x30, x30, %1\n\t"
-	    "or x30, x30, %0\n\t"
-	    :
-	    :"r"(car_window_motor),"r"(mask)
-	    :"x30"
-	    );
-            
-            
-            //on AC
-            AC=0;
-            mask = 0xFFFFFFF7;
-            asm volatile(
-	    "and x30, x30, %1\n\t"
-	    "or x30, x30, %0\n\t"
-	    :
-	    :"r"(AC),"r"(mask)
-	    :"x30"
-	    );
-        }
+	
+       if(j<10)
+			sensor_status=1;
+	else
+			sensor_status=0;
+			
 
+		asm volatile(
+		"or x30, x30, %1\n\t"
+		"andi %0, x30, 0x01\n\t"
+		: "=r" (sensor_state)
+		: "r" (sensor_status)
+		: "x30"
+		);
+	
+
+ 
        
-    }
+        if (sensor_status == 0) {
+            // If temp. is below threshold value keep AC off and windows closed
+            masking=0xFFFFFFFD;
+            printf("AC off and windows closed \n");
+          Temp_sensor = 0; 
+       
+            asm volatile(
+            "and x30,x30, %0\n\t"     // Load immediate 1 into x30
+            "ori x30, x30,2"                 // output at 2nd bit , keeps buzzer in off
+            :
+            :"r"(masking)
+            :"x30"
+            );
+            asm volatile(
+	    	"addi %0, x30, 0\n\t"
+	    	:"=r"(HVAC0)
+	    	:
+	    	:"x30"
+	    	);
+    	printf("HVAC0 = %d\n",HVAC0);
+            
+      
+        } 
+        else {
+            // If Temparture is above threshold value, turn on AC and rolloff windows for a while.
+            masking=0xFFFFFFFD;
+             Temp_sensor = 1; 
+           printf("AC turned on and windows opened for a while \n ");
+            asm volatile( 
+            "and x30,x30, %0\n\t"     // Load immediate 1 into x30
+            "ori x30, x30,0"            //// output at 2nd bit , switches on the HVAC unit
+            :
+            :"r"(masking)
+            :"x30"
+        );
+        asm volatile(
+	    	"addi %0, x30, 0\n\t"
+	    	:"=r"(HVAC1)
+	    	:
+	    	:"x30"
+	    	);
+	printf("HVAC1 = %d\n",HVAC1);
+        }
 
-    return 0;
+ printf("Temp_sensor=%d \n", Temp_sensor);   
+
 }
+
 ```
 
 </details>
