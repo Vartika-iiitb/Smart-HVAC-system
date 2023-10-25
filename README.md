@@ -92,13 +92,13 @@ int main()  {
     int HVAC0,HVAC1;
     
     
-        for (int j=0; j<15;j++) {
-        //while(1){
+        //for (int j=0; j<15;j++) {
+        while(1){
         
 	
-       if(j<10)
+       //if(j<10)
 			sensor_status=1;
-	else
+	//else
 			sensor_status=0;
 			
 
@@ -116,7 +116,7 @@ int main()  {
         if (sensor_status == 0) {
             // If temp. is below threshold value keep AC off and windows closed
             masking=0xFFFFFFFD;
-            printf("AC off and windows closed \n");
+            //printf("AC off and windows closed \n");
           Temp_sensor = 0; 
        
             asm volatile(
@@ -132,7 +132,7 @@ int main()  {
 	    	:
 	    	:"x30"
 	    	);
-    	printf("HVAC0 = %d\n",HVAC0);
+    	//printf("HVAC0 = %d\n",HVAC0);
             
       
         } 
@@ -140,7 +140,7 @@ int main()  {
             // If Temparture is above threshold value, turn on AC and rolloff windows for a while.
             masking=0xFFFFFFFD;
              Temp_sensor = 1; 
-           printf("AC turned on and windows opened for a while \n ");
+           //printf("AC turned on and windows opened for a while \n ");
             asm volatile( 
             "and x30,x30, %0\n\t"     // Load immediate 1 into x30
             "ori x30, x30,0"            //// output at 2nd bit , switches on the HVAC unit
@@ -154,11 +154,14 @@ int main()  {
 	    	:
 	    	:"x30"
 	    	);
-	printf("HVAC1 = %d\n",HVAC1);
+	//printf("HVAC1 = %d\n",HVAC1);
         }
 
- printf("Temp_sensor=%d \n", Temp_sensor);   
+ //printf("Temp_sensor=%d \n", Temp_sensor);   
 
+}
+
+return 0;
 }
 
 ```
@@ -171,8 +174,7 @@ int main()  {
     Code conversion to Assembly
   </summary>
 
-```
-  out:     file format elf32-littleriscv
+```vartika:     file format elf32-littleriscv
 
 
 Disassembly of section .text:
@@ -181,31 +183,34 @@ Disassembly of section .text:
    10054:	fd010113          	addi	sp,sp,-48
    10058:	02812623          	sw	s0,44(sp)
    1005c:	03010413          	addi	s0,sp,48
-   10060:	fec42783          	lw	a5,-20(s0)
-   10064:	00ff6f33          	or	t5,t5,a5
-   10068:	001f7793          	andi	a5,t5,1
-   1006c:	fef42423          	sw	a5,-24(s0)
-   10070:	fec42783          	lw	a5,-20(s0)
-   10074:	02079463          	bnez	a5,1009c <main+0x48>
-   10078:	ffd00793          	li	a5,-3
-   1007c:	fef42223          	sw	a5,-28(s0)
-   10080:	fe042023          	sw	zero,-32(s0)
-   10084:	fe442783          	lw	a5,-28(s0)
-   10088:	00ff7f33          	and	t5,t5,a5
-   1008c:	002f6f13          	ori	t5,t5,2
-   10090:	000f0793          	mv	a5,t5
-   10094:	fcf42e23          	sw	a5,-36(s0)
-   10098:	fc9ff06f          	j	10060 <main+0xc>
-   1009c:	ffd00793          	li	a5,-3
-   100a0:	fef42223          	sw	a5,-28(s0)
-   100a4:	00100793          	li	a5,1
-   100a8:	fef42023          	sw	a5,-32(s0)
-   100ac:	fe442783          	lw	a5,-28(s0)
-   100b0:	00ff7f33          	and	t5,t5,a5
-   100b4:	000f6f13          	ori	t5,t5,0
-   100b8:	000f0793          	mv	a5,t5
-   100bc:	fcf42c23          	sw	a5,-40(s0)
-   100c0:	fa1ff06f          	j	10060 <main+0xc>
+   10060:	00100793          	li	a5,1
+   10064:	fef42623          	sw	a5,-20(s0)
+   10068:	fe042623          	sw	zero,-20(s0)
+   1006c:	fec42783          	lw	a5,-20(s0)
+   10070:	00ff6f33          	or	t5,t5,a5
+   10074:	001f7793          	andi	a5,t5,1
+   10078:	fef42423          	sw	a5,-24(s0)
+   1007c:	fec42783          	lw	a5,-20(s0)
+   10080:	02079463          	bnez	a5,100a8 <main+0x54>
+   10084:	ffd00793          	li	a5,-3
+   10088:	fef42223          	sw	a5,-28(s0)
+   1008c:	fe042023          	sw	zero,-32(s0)
+   10090:	fe442783          	lw	a5,-28(s0)
+   10094:	00ff7f33          	and	t5,t5,a5
+   10098:	002f6f13          	ori	t5,t5,2
+   1009c:	000f0793          	mv	a5,t5
+   100a0:	fcf42e23          	sw	a5,-36(s0)
+   100a4:	fbdff06f          	j	10060 <main+0xc>
+   100a8:	ffd00793          	li	a5,-3
+   100ac:	fef42223          	sw	a5,-28(s0)
+   100b0:	00100793          	li	a5,1
+   100b4:	fef42023          	sw	a5,-32(s0)
+   100b8:	fe442783          	lw	a5,-28(s0)
+   100bc:	00ff7f33          	and	t5,t5,a5
+   100c0:	000f6f13          	ori	t5,t5,0
+   100c4:	000f0793          	mv	a5,t5
+   100c8:	fcf42c23          	sw	a5,-40(s0)
+   100cc:	f95ff06f          	j	10060 <main+0xc>
    
    ```
 
@@ -213,18 +218,17 @@ Disassembly of section .text:
 ```
 Number of different instructions: 11
 List of unique instructions:
-lw
+and
+mv
 andi
+or
+lw
+bnez
+li
+addi
+j
 ori
 sw
-or
-j
-addi
-mv
-bnez
-and
-li
-
 ```
 
 
