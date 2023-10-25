@@ -246,7 +246,23 @@ The compiled output of the C program has been shown below.
 
 </details>
 
+<details>
+	<summary>
+		Spike Simulation
+	</summary>
+	When the temperature is above the threshold value, Then the Temp_sensor = 1, which inturns switches the AC and rolls off the windows for a while, contrary to that when temperature is below threshold value AC is off and windows are closed, the output of which is replicated in the spike results.
+	
+![Screenshot from 2023-10-25 17-12-34](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/997e8f6a-0958-419c-b313-e307f441cb2f)
 
+![Screenshot from 2023-10-25 17-12-38](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/55e4e447-d0bf-4d29-89bb-104d6a70ec17)
+
+to perform the spike simulations following commands were used
+
+```
+riscv64-unknown-elf-gcc -march=rv64i -mabi=lp64 -ffreestanding -o out HAVC_Ccode.c
+spike pk out
+```
+</details>
 <details>
   <summary>
     FUTURE SCOPE
