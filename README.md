@@ -211,21 +211,23 @@ Disassembly of section .text:
 
 
 ```
-Number of different instructions: 10
+Number of different instructions: 11
 List of unique instructions:
-j
-or
-addi
-bne
 lw
-sw
-and
 andi
-li
+ori
+sw
+or
+j
+addi
+mv
 bnez
-
+and
+li
 
 ```
+
+
 The compiled output of the C program has been shown below.
 
 ![tbovartika](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/792b1945-8da1-4bab-8915-3f00e0041b04)
