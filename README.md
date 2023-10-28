@@ -266,12 +266,12 @@ The fig shown below clearly depicts the change in output with the change in inpu
 
 ![io_imagegtkwave](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/88fee338-8b9f-45af-a96f-cf924ab0760f)
 
-
+Toggling in the input depicts in the output as well.
+The figure shown below depicts the clk, top_gpio_pins, output_gpio_pins, ID_instruction_type.
 ![Screenshot from 2023-10-28 17-15-14](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/1fa5dbe1-d975-4f2b-970e-e72a5953775d)
 
-
- 
 </details>
+
 <details>
   <summary>
     FUTURE SCOPE
