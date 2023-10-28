@@ -259,6 +259,9 @@ spike pk out
 	<summary>
 		Functional Simulation
 	</summary>
+In this step we are performing functional simulation in order to check the working of our verilog code and the processor code. the functionality of different input conditions have been tested and verified with the desired output conditions.
+
+The fig shown below clearly depicts the change in output with the change in input. In this input value = 0 shows the temperature is below the threshold value whereas the input value = 1, shows the the temperature is above the threshold value.
 
 
 ![io_imagegtkwave](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/88fee338-8b9f-45af-a96f-cf924ab0760f)
