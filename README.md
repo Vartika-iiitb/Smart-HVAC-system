@@ -256,6 +256,20 @@ spike pk out
 ```
 </details>
 <details>
+	<summary>
+		Functional Simulation
+	</summary>
+
+
+![io_imagegtkwave](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/88fee338-8b9f-45af-a96f-cf924ab0760f)
+
+
+![Screenshot from 2023-10-28 17-15-14](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/1fa5dbe1-d975-4f2b-970e-e72a5953775d)
+
+
+ 
+</details>
+<details>
   <summary>
     FUTURE SCOPE
   </summary>
