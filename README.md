@@ -273,6 +273,64 @@ The figure shown below depicts the clk, top_gpio_pins, output_gpio_pins, ID_inst
 </details>
 
 <details>
+	<summary>
+		Gate Level Simulation
+	</summary>
+In GAte Level Synthesis process, Initially we commented out the sram modules and removed the data and memory instructions because sky130_sram_1kbyte_1rw1r_32x512_8 is the standard cell that we used. After making the following changes in the processor code, we used the following command to convert the RTL code to netlist using Yosys. For that we first need to invoke yosys and then write the following commands.
+	
+```
+$ yosys
+read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80_512.lib 
+read_verilog processor1.v 
+synth -top wrapper
+dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80_512.lib 
+abc -liberty sky130_fd_sc_hd__tt_025C_1v80_512.lib
+write_verilog synth_test_processor.v
+
+```
+Here as we can depict from the screenshot given below there are two sky130_sram_2kbyte_1rwlr_32*512_8_data and the other one as sky130_sram_2kbyte_1rwlr_32*512_8_inst. 
+
+
+ ![Screenshot from 2023-11-01 16-16-16](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/18e1c17c-fd56-4fb1-bd1e-2bb382a8e5f9)
+
+To validate the UART functionality we need to make the writing_inst_done = 0 in the processor file. By doing this we are excluding the UART module from simulation.
+
+For GLS, we need to make writing_inst_done = 1 in the processor file. we mapped the memory element of our design to sky130_sram_1kbyte_1rw1r_32x512_8.v file nad then using the commands shown below we can generate the netlist.
+
+```
+$ yosys
+read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80_512.lib 
+read_verilog processor2.v 
+synth -top wrapper
+dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80_512.lib 
+abc -liberty sky130_fd_sc_hd__tt_025C_1v80_512.lib
+write_verilog synth_test_processor.v
+
+```
+FOr GLS,
+To verify the functionality of the GLS using the iverilog command which includes sram modules and related sky130 primitives.
+The Commands are shown below:
+
+```
+iverilog -o test testbench.v synth_test.v sky130_sram_1kbyte_1rw1r_32x256_8.v sky130_fd_sc_hd.v primitives.v
+./test
+gtkwave waveform.vcd &
+```
+
+![Screenshot from 2023-11-01 15-59-53](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/1fcc0b41-f62f-4cad-920f-df48c0447474)
+
+To show the netlist following commands are being used.
+```
+show wrapper
+```
+
+Below image shows the netlist generated with highlighted wrapper module.
+
+![Screenshot from 2023-11-01 16-03-58](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/e18f15cf-47a2-4309-a711-c0b825383e50)
+
+ 
+</details>
+<details>
   <summary>
     FUTURE SCOPE
   </summary>
