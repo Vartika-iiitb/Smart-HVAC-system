@@ -327,10 +327,9 @@ int main()  {
 
 return 0;
 }
-
 ```
 
-	When the temperature is above the threshold value, Then the Temp_sensor = 1, which inturns switches the AC and rolls off the windows for a while, contrary to that when temperature is below threshold value AC is off and windows are closed, the output of which is replicated in the spike results.
+When the temperature is above the threshold value, Then the Temp_sensor = 1, which inturns switches the AC and rolls off the windows for a while, contrary to that when temperature is below threshold value AC is off and windows are closed, the output of which is replicated in the spike results.
 	
 ![Screenshot from 2023-10-25 17-12-34](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/997e8f6a-0958-419c-b313-e307f441cb2f)
 
