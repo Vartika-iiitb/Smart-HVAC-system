@@ -242,6 +242,94 @@ The compiled output of the C program has been shown below.
 	<summary>
 		Spike Simulation
 	</summary>
+	The modified C code for Spike Simulation is shown below.
+
+ ```
+#include<stdio.h>
+int main()  {
+
+    int sensor_status;
+    int Temp_sensor;
+    int masking;
+    int i;
+    int sensor_state;
+    int HVAC0,HVAC1;
+    
+    
+        for (int j=0; j<15;j++) {
+        //while(1){
+        
+	
+       if(j<10)
+			sensor_status=1;
+	else
+			sensor_status=0;
+			
+
+		asm volatile(
+		"or x30, x30, %1\n\t"
+		"andi %0, x30, 0x01\n\t"
+		: "=r" (sensor_state)
+		: "r" (sensor_status)
+		: "x30"
+		);
+	
+
+ 
+       
+        if (sensor_status == 0) {
+            // If temp. is below threshold value keep AC off and windows closed
+            masking=0xFFFFFFFD;
+            printf("AC off and windows closed \n");
+          Temp_sensor = 0; 
+       
+            asm volatile(
+            "and x30,x30, %0\n\t"     // Load immediate 1 into x30
+            "ori x30, x30,2"                 // output at 2nd bit , keeps buzzer in off
+            :
+            :"r"(masking)
+            :"x30"
+            );
+            asm volatile(
+	    	"addi %0, x30, 0\n\t"
+	    	:"=r"(HVAC0)
+	    	:
+	    	:"x30"
+	    	);
+    	printf("HVAC0 = %d\n",HVAC0);
+            
+      
+        } 
+        else {
+            // If Temparture is above threshold value, turn on AC and rolloff windows for a while.
+            masking=0xFFFFFFFD;
+             Temp_sensor = 1; 
+           printf("AC turned on and windows opened for a while \n ");
+            asm volatile( 
+            "and x30,x30, %0\n\t"     // Load immediate 1 into x30
+            "ori x30, x30,0"            //// output at 2nd bit , switches on the HVAC unit
+            :
+            :"r"(masking)
+            :"x30"
+        );
+        asm volatile(
+	    	"addi %0, x30, 0\n\t"
+	    	:"=r"(HVAC1)
+	    	:
+	    	:"x30"
+	    	);
+	printf("HVAC1 = %d\n",HVAC1);
+        }
+
+ printf("Temp_sensor=%d \n", Temp_sensor);   
+
+}
+
+return 0;
+}
+
+```
+
 	When the temperature is above the threshold value, Then the Temp_sensor = 1, which inturns switches the AC and rolls off the windows for a while, contrary to that when temperature is below threshold value AC is off and windows are closed, the output of which is replicated in the spike results.
 	
 ![Screenshot from 2023-10-25 17-12-34](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/997e8f6a-0958-419c-b313-e307f441cb2f)
@@ -348,6 +436,7 @@ Acknowldgement
 
 * I would sincerely like to thank Mr. Kunal Ghosh, Co founder of VLSI System Design Corp. Pvt. Ltd. for his consistent support and guidance throughout this task.
 * Bhargav, Colleague at IIITB
+* Mayank Kabra (Founder, Chipcron Pvt. Ltd.)
 </details>
 
 <details>
