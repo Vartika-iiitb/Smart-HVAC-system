@@ -417,6 +417,140 @@ Below image shows the netlist generated with highlighted wrapper module.
 
  
 </details>
+
+<details>
+	<summary>
+		PHYSICAL DESIGN
+	</summary>
+	
+**OpenLane**
+
+OpenLane is an open-source, automated RTL-to-GDSII (Register Transfer Level to Graphic Data System II) flow for digital integrated circuit (IC) design. OpenLane aims to provide a complete open-source digital ASIC (Application-Specific Integrated Circuit) implementation flow, covering various stages of the chip design process, including synthesis, place and route, and final layout generation. The project is designed to be customizable and configurable to accommodate different design requirements.
+
+**Preparing the Design**
+Preparing the design and including the lef files: The commands to prepare the design and overwite in a existing run folder the reports and results along with the command to include the lef files is given below:
+
+```
+make mount
+%./flow.tcl -interactive
+% package require openlane 0.9
+% prep -design project 
+
+```
+
+![Screenshot from 2023-11-16 22-20-49](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/dbb4ebe8-c975-4944-a54b-8231854bb45f)
+
+
+ ## Synthesis
+ 
+ To synthesize the code run the following command:
+ 
+ ```
+run_synthesis
+```
+
+![Screenshot from 2023-11-16 22-31-37](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/c9a0b2f5-dcbb-465e-b63e-01e3ede19f53)
+
+**Statistics after Synthesis**
+
+![Screenshot from 2023-11-16 23-34-22](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/e43dafd7-3234-4fcd-90be-ce4ced8835fb)
+
+
+## Floorplan
+
+In the context of ASIC (Application-Specific Integrated Circuit) design, a floorplan is a crucial step in the physical design process. It involves planning the arrangement and organization of various functional blocks and components on the silicon die. The floorplan plays a significant role in determining the overall performance, power consumption, and ease of manufacturing of the integrated circuit.
+
+
+Following command helps to run floorplan:
+
+```
+run_floorplan
+```
+
+![Screenshot from 2023-11-16 22-48-22](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/be859868-609c-4c90-9628-10d4d91203cf)
+
+Post the floorplan run, a .def file will have been created within the results/floorplan directory. We may review floorplan files by checking the floorplan.tcl.
+To view the floorplan: Magic is invoked after moving to the results/floorplan directory,then use the floowing command:
+
+```
+magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+```
+
+![Screenshot from 2023-11-17 01-18-37](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/553b1dae-c88b-4137-b9f8-6126301ac39d)
+
+## Die area (post floor plan)
+
+![Screenshot from 2023-11-17 00-38-23](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/b2d7c80c-36cd-41e1-9a0c-e5e36040d3af)
+
+## Core area (post floor plan)
+
+![Screenshot from 2023-11-17 00-38-29](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/2b4ee13d-312d-4cb9-9994-de1e513ada14)
+
+
+
+## Placement
+
+```
+run_placement
+```
+
+![Screenshot from 2023-11-16 23-04-06](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/e4607bec-b49d-4c3c-a111-c686dfd194f2)
+
+Post placement: the design can be viewed on magic within results/placement directory. Run the follwing command in that directory:
+
+```
+magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+```
+
+![Screenshot from 2023-11-16 23-56-00](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/ec3fed00-9c04-4a87-aac7-e0139a77a7c8)
+
+Post placement: the design can be viewed on magic within results/placement directory. Run the follwing command in that directory:
+
+```
+magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+```
+## CTS
+
+Clock Tree Synthesis (CTS) is a crucial step in the physical design flow of an ASIC (Application-Specific Integrated Circuit). It involves the generation of a well-optimized and balanced clock distribution network across the chip to ensure precise and synchronous clocking of various components. The purpose of building a clock tree is enable the clock input to reach every element and to ensure a zero clock skew. H-tree is a common methodology followed in CTS.
+
+
+
+```
+run_cts
+```
+
+![Screenshot from 2023-11-16 23-14-44](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/a8fc8131-2322-4f2b-bdd5-f52953bb6c71)
+
+Below is the power report attached 
+![Screenshot from 2023-11-17 01-27-13](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/80be78d2-b718-4f2e-a83a-94a911bbd0aa)
+
+The timing report of circuit is 
+
+![Screenshot from 2023-11-17 01-28-02](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/2abb6f15-114b-4143-b2f6-8f92ad7896cc)
+
+## Routing
+
+```
+run_routing
+```
+
+![Screenshot from 2023-11-17 00-32-18](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/572f39bc-1c97-4dda-b4f5-392d72192dfe)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</details>
 <details>
   <summary>
     FUTURE SCOPE
