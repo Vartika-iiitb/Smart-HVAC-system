@@ -530,24 +530,35 @@ The timing report of circuit is
 
 ## Routing
 
+Routing in VLSI refers to the process of establishing physical connections between various components and modules on an integrated circuit (IC) chip. These connections are necessary to enable the flow of signals between different functional blocks, such as logic gates, memory cells, and input/output pads. Routing is a critical step in the physical design of an IC and plays a significant role in determining the overall performance, power consumption, and manufacturability of the chip.
+
 ```
 run_routing
 ```
 
+
 ![Screenshot from 2023-11-17 00-32-18](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/572f39bc-1c97-4dda-b4f5-392d72192dfe)
 
+**In Routing Stage**
+
+Layout in magic tool post routing: the design can be viewed on magic within results/routing directory. Run the follwing command in that directory:
+
+```
+magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+```
+**Layout after Routing**
+
+![Screenshot from 2023-11-17 18-20-32](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/9d57e253-423c-48c6-846b-41405f840d28)
+
+**Area of Design**
+
+![Screenshot from 2023-11-17 18-24-43 (1)](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/93a5d22b-c33f-486e-9d71-d5a1f83576bf)
 
 
+**DRC**
 
 
-
-
-
-
-
-
-
-
+![Screenshot from 2023-11-17 19-20-49](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/6afaa2d6-4ee6-4a77-8e1b-fd3855040527)
 
 
 </details>
