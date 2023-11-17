@@ -557,9 +557,7 @@ magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f23
 
 **DRC**
 
-
-![Screenshot from 2023-11-17 19-20-49](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/6afaa2d6-4ee6-4a77-8e1b-fd3855040527)
-
+![Screenshot from 2023-11-17 19-28-32](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/9ee731f0-5aa3-468c-b520-2052a779bb31)
 
 </details>
 <details>
