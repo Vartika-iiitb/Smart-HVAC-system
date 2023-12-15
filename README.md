@@ -529,6 +529,23 @@ magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f23
 
 ![Screenshot from 2023-12-15 22-23-39](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/25affc8a-94aa-4a7f-9c05-73cabcf40823)
 
+**Performance Calculation**
+
+Given a Clock period of 100ns in Json file , setup slack we got after routing is 9.83ns
+
+```
+                              1
+Max Performance =  ------------------------
+                     clock period - slack(setup)
+
+```
+
+```
+Max Performance = 11.09 Mhz
+
+```
+
+
 # FUTURE SCOPE
 
  * To develop a user-friendly interface accessible via a mobile app, web dashboard or both.
