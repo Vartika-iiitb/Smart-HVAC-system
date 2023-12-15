@@ -506,7 +506,13 @@ Layout in magic tool post routing: the design can be viewed on magic within resu
 ```
 magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
 ```
-**Layout after Routing**
+
+**Layout**
+
+![vartika](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/2d0617ad-e152-4e10-ae0a-bde8db9684c8)
+
+
+**Zoomed view of Layout after Routing**
 
 ![Screenshot from 2023-11-17 18-20-32](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/9d57e253-423c-48c6-846b-41405f840d28)
 
