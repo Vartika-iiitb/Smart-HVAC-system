@@ -1,12 +1,11 @@
-# Smart-HVAC-system
+## Smart-HVAC-system
 
 This Repository summarizes the progress made on RISC V based project.
 
-<details>
-  <summary>
-    Purpose
-  </summary>
-  Heating, Ventilation, and Air Conditioning (HVAC) systems are essential in various applications where maintaining optimal indoor environmental conditions is crucial for comfort, health, or process requirements. 
+
+# Objective 
+ 
+Heating, Ventilation, and Air Conditioning (HVAC) systems are essential in various applications where maintaining optimal indoor environmental conditions is crucial for comfort, health, or process requirements. 
 
 This Project focusses on smart HVAC systems that are installed in cars which will ensure a temperature and moisture control inside the vehicle using DHT11 temperature and moisture sensor. It is Effective as well as economically feasible. The output of the sensor will act as the input for RISC V which will be help us to roll off the window and Switch on the HVAC system even if the people are not around. These are useful when the car is either parked on outdoors during the day time or if there is humidity out. These are essential in various environments for several reasons:
 
@@ -26,12 +25,7 @@ Temperature Zoning: HVAC systems can be designed with zoning capabilities, allow
 
 In summary, HVAC systems are essential for ensuring human comfort, health, safety, and the efficient operation of buildings and various industrial processes. They are designed to address a wide range of environmental and operational needs in diverse settings.
   
-</details>
-
-<details>
-  <summary>
-    MOTIVATION
-  </summary>
+# Project Idea
   This Project focusses on creating a  smart HVAC system in cars. The development and integration of HVAC (Heating, Ventilation, and Air Conditioning) systems in cars are driven by several important factors, all aimed at enhancing the comfort, safety, and overall driving experience for passengers and drivers:
 
   **1. Passenger Comfort:**
@@ -66,20 +60,12 @@ Emission Regulations: Regulations and standards often mandate the use of HVAC sy
 Safety Regulations: Proper defrosting and demisting are essential for compliance with safety regulations, ensuring visibility is not compromised.
 In summary, the integration of HVAC systems in cars is driven by the need to provide comfort, safety, and well-being for passengers and drivers. Meeting consumer expectations, ensuring safety compliance, and staying competitive in the market are significant motivators for car manufacturers to invest in advanced and efficient HVAC technologies.
 
-</details>
-<details>
-  <summary>
-    BLOCK DIAGRAM
-  </summary>
+# Block diagram
+  
   
 ![WhatsApp Image 2023-10-10 at 19 18 57](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/5ea4909d-0650-4f72-9b06-aafc581a5e83)
 
-</details>
-<details>
-  <summary>
-    C code
-  </summary>
-	
+# C Program for HVAC unit
   ```
 #include<stdio.h>
 int main()  {
@@ -166,13 +152,7 @@ return 0;
 
 ```
 
-</details>
-
-<details>
-
-  <summary>
-    Code conversion to Assembly
-  </summary>
+# Assembly level code 
 
 ```vartika:     file format elf32-littleriscv
 
@@ -214,7 +194,7 @@ Disassembly of section .text:
    
    ```
 
-
+# Unique instructions 
 ```
 Number of different instructions: 11
 List of unique instructions:
@@ -236,13 +216,10 @@ The compiled output of the C program has been shown below.
 
 ![tbovartika](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/792b1945-8da1-4bab-8915-3f00e0041b04)
 
-</details>
 
-<details>
-	<summary>
-		Spike Simulation
-	</summary>
-	The modified C code for Spike Simulation is shown below.
+# Spike Simulation
+		
+The modified C code for Spike Simulation is shown below.
 
  ```
 #include<stdio.h>
@@ -341,11 +318,9 @@ to perform the spike simulations following commands were used
 riscv64-unknown-elf-gcc -march=rv64i -mabi=lp64 -ffreestanding -o out HAVC_Ccode.c
 spike pk out
 ```
-</details>
-<details>
-	<summary>
-		Functional Simulation
-	</summary>
+
+# Functional Simulation
+	
 In this step we are performing functional simulation in order to check the working of our verilog code and the processor code. the functionality of different input conditions have been tested and verified with the desired output conditions.
 
 The fig shown below clearly depicts the change in output with the change in input. In this input value = 0 shows the temperature is below the threshold value whereas the input value = 1, shows the the temperature is above the threshold value.
@@ -357,13 +332,9 @@ Toggling in the input depicts in the output as well.
 The figure shown below depicts the clk, top_gpio_pins, output_gpio_pins, ID_instruction_type.
 ![Screenshot from 2023-10-28 17-15-14](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/1fa5dbe1-d975-4f2b-970e-e72a5953775d)
 
-</details>
+# Gate Level Simulation
 
-<details>
-	<summary>
-		Gate Level Simulation
-	</summary>
-In GAte Level Synthesis process, Initially we commented out the sram modules and removed the data and memory instructions because sky130_sram_1kbyte_1rw1r_32x512_8 is the standard cell that we used. After making the following changes in the processor code, we used the following command to convert the RTL code to netlist using Yosys. For that we first need to invoke yosys and then write the following commands.
+In Gate Level Synthesis process, Initially we commented out the sram modules and removed the data and memory instructions because sky130_sram_1kbyte_1rw1r_32x512_8 is the standard cell that we used. After making the following changes in the processor code, we used the following command to convert the RTL code to netlist using Yosys. For that we first need to invoke yosys and then write the following commands.
 	
 ```
 $ yosys
@@ -394,7 +365,7 @@ abc -liberty sky130_fd_sc_hd__tt_025C_1v80_512.lib
 write_verilog synth_test_processor.v
 
 ```
-FOr GLS,
+For GLS,
 To verify the functionality of the GLS using the iverilog command which includes sram modules and related sky130 primitives.
 The Commands are shown below:
 
@@ -416,13 +387,7 @@ Below image shows the netlist generated with highlighted wrapper module.
 ![Screenshot from 2023-11-01 16-03-58](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/e18f15cf-47a2-4309-a711-c0b825383e50)
 
  
-</details>
-
-<details>
-	<summary>
-		PHYSICAL DESIGN
-	</summary>
-	
+# PHYSICAL DESIGN using Openlane
 **OpenLane**
 
 OpenLane is an open-source, automated RTL-to-GDSII (Register Transfer Level to Graphic Data System II) flow for digital integrated circuit (IC) design. OpenLane aims to provide a complete open-source digital ASIC (Application-Specific Integrated Circuit) implementation flow, covering various stages of the chip design process, including synthesis, place and route, and final layout generation. The project is designed to be customizable and configurable to accommodate different design requirements.
@@ -486,8 +451,6 @@ magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f23
 
 ![Screenshot from 2023-11-17 00-38-29](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/2b4ee13d-312d-4cb9-9994-de1e513ada14)
 
-
-
 ## Placement
 
 ```
@@ -513,8 +476,6 @@ magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f23
 
 Clock Tree Synthesis (CTS) is a crucial step in the physical design flow of an ASIC (Application-Specific Integrated Circuit). It involves the generation of a well-optimized and balanced clock distribution network across the chip to ensure precise and synchronous clocking of various components. The purpose of building a clock tree is enable the clock input to reach every element and to ensure a zero clock skew. H-tree is a common methodology followed in CTS.
 
-
-
 ```
 run_cts
 ```
@@ -535,7 +496,6 @@ Routing in VLSI refers to the process of establishing physical connections betwe
 ```
 run_routing
 ```
-
 
 ![Screenshot from 2023-11-17 00-32-18](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/572f39bc-1c97-4dda-b4f5-392d72192dfe)
 
@@ -559,37 +519,23 @@ magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f23
 
 ![Screenshot from 2023-11-17 19-28-32](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/9ee731f0-5aa3-468c-b520-2052a779bb31)
 
-</details>
-<details>
-  <summary>
-    FUTURE SCOPE
-  </summary>
-  
+# FUTURE SCOPE
+
  * To develop a user-friendly interface accessible via a mobile app, web dashboard or both.
  * It include features like real time temperature monitoring, Scheduling and remote control.
  * Implement Machine Learning algorithms
  
-</details>
+ # Acknowldgement
 
-<details>
-<summary>
-Acknowldgement
-</summary>
-
-* I would sincerely like to thank Mr. Kunal Ghosh, Co founder of VLSI System Design Corp. Pvt. Ltd. for his consistent support and guidance throughout this task.
+* I would sincerely like to thank Mr. Kunal Ghosh, (Co founder of VLSI System Design Corp. Pvt. Ltd.) for his consistent support and guidance throughout this task.
 * Bhargav, Colleague at IIITB
 * Mayank Kabra (Founder, Chipcron Pvt. Ltd.)
-</details>
 
-<details>
-<summary>
-References
-</summary>
-	
+# References
  * https://github.com/SakethGajawada/RISCV-GNU
  * https://github.com/kunalg123
  * https://www.vsdiat.com/
-</details>
+
 
 
 
