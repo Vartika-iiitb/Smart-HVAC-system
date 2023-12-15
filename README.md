@@ -525,6 +525,10 @@ magic -T /home/vartika/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f23
 
 ![Screenshot from 2023-11-17 19-28-32](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/9ee731f0-5aa3-468c-b520-2052a779bb31)
 
+**Timing Report**
+
+![Screenshot from 2023-12-15 22-23-39](https://github.com/Vartika-iiitb/Smart-HVAC-system/assets/140998716/25affc8a-94aa-4a7f-9c05-73cabcf40823)
+
 # FUTURE SCOPE
 
  * To develop a user-friendly interface accessible via a mobile app, web dashboard or both.
